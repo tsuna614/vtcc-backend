@@ -30,10 +30,13 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
   console.log(__dirname);
 
   fs.writeFile(
-    path.join("/opt/render/project/src/data/imagePath.json"),
+    path.join(__dirname, "..", "data", "imagePath.json"),
+    // path.join("/opt/render/project/src/data/imagePath.json"),
     jsonImagePath,
     function (err) {
-      if (err) throw err;
+      if (err) {
+        console.log(err);
+      };
       console.log("Saved!");
     }
   );
@@ -48,7 +51,7 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
     // res.end("end");
   });
 
-  await delay(20000);
+  await delay(5000);
   unlink(req.file.path, (err) => {
     if (err) throw err;
     console.log(req.file.path + " was deleted");
