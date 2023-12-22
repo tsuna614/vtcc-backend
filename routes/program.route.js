@@ -30,7 +30,7 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
   console.log(__dirname);
 
   fs.writeFile(
-    path.join(__dirname + "../data/imagePath.json"),
+    path.join("/opt/render/project/src/data/imagePath.json"),
     jsonImagePath,
     function (err) {
       if (err) throw err;
