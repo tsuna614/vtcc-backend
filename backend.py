@@ -2,7 +2,15 @@ import pickle
 from skimage import feature
 import cv2 as cv
 import numpy as np
-import sys
+import json
+import os
+
+data = './data'
+img_path = os.listdir(data)
+with open(os.path.join(data,img_path[0])) as f:
+   img_data = json.load(f)
+   
+img = img_data['path']
 
 def TinhHOG(pathfilename):
   print("python is running")
@@ -22,6 +30,6 @@ load_model = pickle.load(open('svm_hog.sav', 'rb'))
 # print(load_model.predict(X_temp))
 
 
-print(load_model.predict(TinhHOG(sys.argv[1])))
+print(load_model.predict(TinhHOG(img)))
 # print("python is running")
 
