@@ -39,7 +39,7 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
     }
   );
 
-  const pyProg = await spawn("python", ["backend.py", 'abc']);
+  const pyProg = await spawn("python", ["test.py", req.file.path]);
 
   pyProg.stdout.on("data", function (data) {
     var cakeName = data.toString();
