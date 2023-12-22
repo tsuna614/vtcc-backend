@@ -4,6 +4,7 @@ const express = require("express");
 const path = require("path");
 const router = express.Router();
 const multer = require("multer");
+const { spawn } = require("child_process");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -23,7 +24,6 @@ const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 // post image and get data
 router.post("/getImageName", upload.single("image"), async (req, res) => {
   // console.log(req.file);
-  const { spawn } = require("child_process");
   //   const pyProg = spawn("python", [
   //     "backend.py",
   //     "E:\\MayHocvaCongCu_SE335\\Project\\data\\Banh_1.jpg",
