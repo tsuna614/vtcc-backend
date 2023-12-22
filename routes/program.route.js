@@ -29,16 +29,16 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
   //     "E:\\MayHocvaCongCu_SE335\\Project\\data\\Banh_1.jpg",
   //   ]);
   console.log(req.file.path);
-  const pyProg = await spawn("python", ["backend.py", req.file.path]);
-
-  console.log(pyProg.data);
+  const pyProg = await spawn("python3", ["test.py", req.file.path]);
 
   pyProg.stdout.on("data", function (data) {
-    var cakeName = data.toString();
-    console.log(cakeName);
-    res.status(200).json({ message: cakeName });
-    // res.write(data);
-    // res.end("end");
+    // var cakeName = data.toString();
+    // console.log(cakeName);
+    // res.status(200).json({ message: cakeName });
+    // // res.write(data);
+    // // res.end("end");
+
+    console.log(data.toString());
   });
 
   await delay(5000);

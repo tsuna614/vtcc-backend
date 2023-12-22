@@ -20,6 +20,6 @@ load_model = pickle.load(open('E:\\MayHocvaCongCu_SE335\\Project\\VTCC-App\\back
 # print(load_model.predict(X_temp))
 
 
-# print(load_model.predict(TinhHOG(sys.argv[1])))
-print("python is running")
+print(load_model.predict(TinhHOG(sys.argv[1])))
+# print("python is running")
 
