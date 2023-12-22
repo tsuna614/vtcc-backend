@@ -27,7 +27,7 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
   var imagePath = { path: req.file.path };
   jsonImagePath = JSON.stringify(imagePath);
 
-  fs.writeFile(
+  await fs.writeFile(
     path.join(__dirname, "..", "data", "imagePath.json"),
     // path.join("/opt/render/project/src/data/imagePath.json"),
     jsonImagePath,
@@ -39,7 +39,7 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
     }
   );
 
-  const pyProg = await spawn("python", ["backend.py"], req.file.path);
+  const pyProg = await spawn("python", ["backend.py"], 'abc');
 
   pyProg.stdout.on("data", function (data) {
     var cakeName = data.toString();
