@@ -5,7 +5,7 @@ const path = require("path");
 const router = express.Router();
 const multer = require("multer");
 
-const storage = multer.memoryStorage({
+const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "images");
   },
@@ -39,7 +39,7 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
     // res.end("end");
   });
 
-  await delay(20000);
+  await delay(5000);
   unlink(req.file.path, (err) => {
     if (err) throw err;
     console.log(req.file.path + " was deleted");
