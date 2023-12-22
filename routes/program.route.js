@@ -5,6 +5,7 @@ const path = require("path");
 const router = express.Router();
 const multer = require("multer");
 const { spawn } = require("child_process");
+const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -23,13 +24,21 @@ const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 // post image and get data
 router.post("/getImageName", upload.single("image"), async (req, res) => {
-  // console.log(req.file);
-  //   const pyProg = spawn("python", [
-  //     "backend.py",
-  //     "E:\\MayHocvaCongCu_SE335\\Project\\data\\Banh_1.jpg",
-  //   ]);
+  var imagePath = { path: req.file.path };
+  jsonImagePath = JSON.stringify(imagePath);
+  // fs.writeFileSync("imagePath.json", JSON.stringify(imagePath));
+  // write a json file
+  fs.writeFile(
+    path.join(__dirname, "..", "data", "imagePath.json"),
+    jsonImagePath,
+    function (err) {
+      if (err) throw err;
+      console.log("Saved!");
+    }
+  );
+
   console.log(req.file.path);
-  const pyProg = await spawn("python", ["backend.py", req.file.path]);
+  const pyProg = await spawn("python3", ["test.py", req.file.path]);
 
   pyProg.stdout.on("data", function (data) {
     // var cakeName = data.toString();
@@ -41,11 +50,15 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
     console.log(data.toString());
   });
 
-  // await delay(5000);
-  // unlink(req.file.path, (err) => {
-  //   if (err) throw err;
-  //   console.log(req.file.path + " was deleted");
-  // });
+  await delay(5000);
+  unlink(req.file.path, (err) => {
+    if (err) throw err;
+    console.log(req.file.path + " was deleted");
+  });
+  unlink("data/imagePath.json", (err) => {
+    if (err) throw err;
+    console.log("imagePath.json was deleted");
+  });
 });
 
 module.exports = router;
