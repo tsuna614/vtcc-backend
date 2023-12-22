@@ -28,7 +28,7 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
   //     "backend.py",
   //     "E:\\MayHocvaCongCu_SE335\\Project\\data\\Banh_1.jpg",
   //   ]);
-  console.log(req.file);
+  console.log(req.file.path);
   const pyProg = await spawn("python", ["backend.py", req.file.path]);
 
   pyProg.stdout.on("data", function (data) {
