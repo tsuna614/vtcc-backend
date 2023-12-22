@@ -1,14 +1,15 @@
 print('1')
 import pickle
 print('2')
-import cv2 as cv
-print('3')
-import skimage
-print('4')
-# import numpy as np
 import json
-print('5')
+print('3')
 import os
+print('4')
+import cv2 as cv
+print('5')
+import skimage
+# import numpy as np
+
 
 print("python is running")
 data = './data'
