@@ -5,15 +5,16 @@ import numpy as np
 import json
 import os
 
+print("python is running")
 data = './data'
 img_path = os.listdir(data)
 with open(os.path.join(data,img_path[0])) as f:
    img_data = json.load(f)
-   
+
 img = img_data['path']
 
 def TinhHOG(pathfilename):
-  print("python is running")
+  print("python is running 2")
   img = cv.imread(pathfilename,0)
   img = cv.resize(img, (64, 128))
   (hog, hog_image) = feature.hog(
