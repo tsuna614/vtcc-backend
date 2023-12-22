@@ -1,9 +1,9 @@
 print('1')
 import pickle
 print('2')
-import skimage
-print('3')
 import cv2 as cv
+print('3')
+import skimage
 print('4')
 # import numpy as np
 import json
