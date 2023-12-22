@@ -1,8 +1,13 @@
+print('1')
 import pickle
+print('2')
 from skimage import feature
+print('3')
 import cv2 as cv
+print('4')
 # import numpy as np
 import json
+print('5')
 import os
 
 print("python is running")
