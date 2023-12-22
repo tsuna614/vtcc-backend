@@ -15,11 +15,13 @@ def TinhHOG(pathfilename):
       )
   # return hog / np.linalg.norm(hog)
   return hog.reshape(1,-1)
-load_model = pickle.load(open('E:\\MayHocvaCongCu_SE335\\Project\\VTCC-App\\backend\\svm_hog.sav', 'rb'))
+
+load_model = pickle.load(open('svm_hog.sav', 'rb'))
+# load_model = pickle.load(open('E:\\MayHocvaCongCu_SE335\\Project\\VTCC-App\\backend\\svm_hog.sav', 'rb'))
 # X_temp=np.array(TinhHOG('E:\computer_vision\Project\BanhPia\Banh_pia_138.png').reshape(1,-1))
 # print(load_model.predict(X_temp))
 
 
-# print(load_model.predict(TinhHOG(sys.argv[1])))
-print("python is running")
+print(load_model.predict(TinhHOG(sys.argv[1])))
+# print("python is running")
 

@@ -41,11 +41,11 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
     console.log(data.toString());
   });
 
-  await delay(5000);
-  unlink(req.file.path, (err) => {
-    if (err) throw err;
-    console.log(req.file.path + " was deleted");
-  });
+  // await delay(5000);
+  // unlink(req.file.path, (err) => {
+  //   if (err) throw err;
+  //   console.log(req.file.path + " was deleted");
+  // });
 });
 
 module.exports = router;
