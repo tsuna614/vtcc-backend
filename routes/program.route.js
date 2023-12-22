@@ -26,10 +26,11 @@ const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 router.post("/getImageName", upload.single("image"), async (req, res) => {
   var imagePath = { path: req.file.path };
   jsonImagePath = JSON.stringify(imagePath);
-  // fs.writeFileSync("imagePath.json", JSON.stringify(imagePath));
-  // write a json file
+  
+  console.log(__dirname);
+
   fs.writeFile(
-    path.join(__dirname, "..", "data", "imagePath.json"),
+    path.join("..", "data", "imagePath.json"),
     jsonImagePath,
     function (err) {
       if (err) throw err;
