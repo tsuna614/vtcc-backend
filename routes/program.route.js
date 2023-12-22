@@ -47,7 +47,7 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
     // res.end("end");
   });
 
-  await delay(5000);
+  await delay(20000);
   unlink(req.file.path, (err) => {
     if (err) throw err;
     console.log(req.file.path + " was deleted");
