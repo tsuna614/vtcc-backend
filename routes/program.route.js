@@ -31,6 +31,8 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
   console.log(req.file.path);
   const pyProg = await spawn("python", ["backend.py", req.file.path]);
 
+  console.log(pyProg);
+
   pyProg.stdout.on("data", function (data) {
     var cakeName = data.toString();
     console.log(cakeName);
