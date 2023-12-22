@@ -26,8 +26,6 @@ const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 router.post("/getImageName", upload.single("image"), async (req, res) => {
   var imagePath = { path: req.file.path };
   jsonImagePath = JSON.stringify(imagePath);
-  
-  console.log(__dirname);
 
   fs.writeFile(
     path.join(__dirname, "..", "data", "imagePath.json"),
@@ -56,10 +54,24 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
     if (err) throw err;
     console.log(req.file.path + " was deleted");
   });
-  unlink("data/imagePath.json", (err) => {
-    if (err) throw err;
-    console.log("imagePath.json was deleted");
-  });
+  // unlink("data/imagePath.json", (err) => {
+  //   if (err) throw err;
+  //   console.log("imagePath.json was deleted");
+  // });
+  var emptyPath = { path: '' };
+  jsonEmptyPath = JSON.stringify(emptyPath);
+
+  fs.writeFile(
+    path.join(__dirname, "..", "data", "imagePath.json"),
+    // path.join("/opt/render/project/src/data/imagePath.json"),
+    jsonEmptyPath,
+    function (err) {
+      if (err) {
+        console.log(err);
+      };
+      console.log("Saved!");
+    }
+  );
 });
 
 module.exports = router;
