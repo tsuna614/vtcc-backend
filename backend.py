@@ -5,6 +5,7 @@ import numpy as np
 import sys
 
 def TinhHOG(pathfilename):
+  print("python is running")
   img = cv.imread(pathfilename,0)
   img = cv.resize(img, (64, 128))
   (hog, hog_image) = feature.hog(

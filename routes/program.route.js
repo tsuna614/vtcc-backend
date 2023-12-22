@@ -1,5 +1,5 @@
 // import { unlink } from 'node:fs';
-const unlink = require('node:fs').unlink;
+const unlink = require("node:fs").unlink;
 const express = require("express");
 const path = require("path");
 const router = express.Router();
@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 // const upload = multer();
 
-const delay = ms => new Promise(res => setTimeout(res, ms));
+const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 // post image and get data
 router.post("/getImageName", upload.single("image"), async (req, res) => {
@@ -38,11 +38,11 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
     // res.end("end");
   });
 
-  await delay(5000);
+  await delay(20000);
   unlink(req.file.path, (err) => {
     if (err) throw err;
-    console.log(req.file.path + ' was deleted');
-  }); 
+    console.log(req.file.path + " was deleted");
+  });
 });
 
 module.exports = router;
