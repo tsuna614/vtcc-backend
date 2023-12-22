@@ -5,7 +5,7 @@ const path = require("path");
 const router = express.Router();
 const multer = require("multer");
 
-const storage = multer.diskStorage({
+const storage = multer.memoryStorage({
   destination: (req, file, cb) => {
     cb(null, "images");
   },
@@ -28,6 +28,7 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
   //     "backend.py",
   //     "E:\\MayHocvaCongCu_SE335\\Project\\data\\Banh_1.jpg",
   //   ]);
+  console.log(req.file);
   const pyProg = await spawn("python", ["backend.py", req.file.path]);
 
   pyProg.stdout.on("data", function (data) {
