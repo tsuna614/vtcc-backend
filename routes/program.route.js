@@ -29,7 +29,7 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
   //     "E:\\MayHocvaCongCu_SE335\\Project\\data\\Banh_1.jpg",
   //   ]);
   console.log(req.file.path);
-  const pyProg = await spawn("python3", ["backend.py", req.file.path]);
+  const pyProg = await spawn("python3", ["test.py", req.file.path]);
 
   pyProg.stdout.on("data", function (data) {
     // var cakeName = data.toString();
