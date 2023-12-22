@@ -5,7 +5,6 @@ import numpy as np
 import sys
 
 def TinhHOG(pathfilename):
-  print("python is running")
   img = cv.imread(pathfilename,0)
   img = cv.resize(img, (64, 128))
   (hog, hog_image) = feature.hog(
@@ -14,11 +13,10 @@ def TinhHOG(pathfilename):
       block_norm='L2-Hys', visualize=True, transform_sqrt=True
       )
   # return hog / np.linalg.norm(hog)
-  print(hog)
-  return hog
+  return hog.reshape(1,-1)
 load_model = pickle.load(open('E:\\MayHocvaCongCu_SE335\\Project\\VTCC-App\\backend\\svm_hog.sav', 'rb'))
 # X_temp=np.array(TinhHOG('E:\computer_vision\Project\BanhPia\Banh_pia_138.png').reshape(1,-1))
 # print(load_model.predict(X_temp))
 
 
-TinhHOG(sys.argv[1])
+print(load_model.predict(TinhHOG(sys.argv[1])))
