@@ -18,9 +18,10 @@ with open(os.path.join(data,img_path[0])) as f:
    img_data = json.load(f)
 
 img = img_data['path']
+print('python is running 2')
 
 def TinhHOG(pathfilename):
-  print("python is running 2")
+  print("python is running 3")
   img = cv.imread(pathfilename,0)
   img = cv.resize(img, (64, 128))
   (hog, hog_image) = skimage.feature.hog(
