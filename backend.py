@@ -1,27 +1,19 @@
-print('1')
 import pickle
-print('2')
 import json
-print('3')
 import os
-print('4')
 import cv2 as cv
-print('5')
 import skimage
 # import numpy as np
 
 
-print("python is running")
 data = './data'
 img_path = os.listdir(data)
 with open(os.path.join(data,img_path[0])) as f:
    img_data = json.load(f)
 
 img = img_data['path']
-print('python is running 2')
 
 def TinhHOG(pathfilename):
-  print("python is running 3")
   img = cv.imread(pathfilename,0)
   img = cv.resize(img, (64, 128))
   (hog, hog_image) = skimage.feature.hog(
@@ -31,13 +23,12 @@ def TinhHOG(pathfilename):
       )
   # return hog / np.linalg.norm(hog)
   return hog.reshape(1,-1)
-print('python is running 4')
+
 load_model = pickle.load(open('svm_hog.sav', 'rb'))
 # load_model = pickle.load(open('E:\\MayHocvaCongCu_SE335\\Project\\VTCC-App\\backend\\svm_hog.sav', 'rb'))
 # X_temp=np.array(TinhHOG('E:\computer_vision\Project\BanhPia\Banh_pia_138.png').reshape(1,-1))
 # print(load_model.predict(X_temp))
 
-print('python is running 5')
 print(str(load_model.predict(TinhHOG(img))))
 # print("python is running")
 

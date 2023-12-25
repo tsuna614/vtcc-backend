@@ -43,7 +43,7 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
 
   pyProg.stdout.on("data", function (data) {
     var cakeName = data.toString();
-    console.log(cakeName);
+    // console.log(cakeName);
     res.status(200).json({ message: cakeName });
     // res.write(data);
     // res.end("end");
