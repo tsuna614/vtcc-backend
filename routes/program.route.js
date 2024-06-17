@@ -40,6 +40,7 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
   );
 
   const pyProg = await spawn("python", ["backend.py", req.file.path]);
+  console.log('abc')
 
   pyProg.stdout.on("data", function (data) {
     var cakeName = data.toString();
@@ -58,20 +59,6 @@ router.post("/getImageName", upload.single("image"), async (req, res) => {
   //   if (err) throw err;
   //   console.log("imagePath.json was deleted");
   // });
-  var emptyPath = { path: '' };
-  jsonEmptyPath = JSON.stringify(emptyPath);
-
-  fs.writeFile(
-    path.join(__dirname, "..", "data", "imagePath.json"),
-    // path.join("/opt/render/project/src/data/imagePath.json"),
-    jsonEmptyPath,
-    function (err) {
-      if (err) {
-        console.log(err);
-      };
-      console.log("Saved!");
-    }
-  );
 });
 
 module.exports = router;
