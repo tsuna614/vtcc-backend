@@ -5,13 +5,12 @@ import cv2 as cv
 import skimage
 # import numpy as np
 
-print('abc')
-data = './data'
+data = './assets'
 img_path = os.listdir(data)
-with open(os.path.join(data,img_path[0])) as f:
-   img_data = json.load(f)
-
-img = img_data['path']
+# with open(os.path.join(data,img_path[0])) as f:
+#    img_data = json.load(f)
+# print(img_path)
+img = os.path.join(data,img_path[0])
 
 def TinhHOG(pathfilename):
   print(pathfilename)
@@ -25,9 +24,9 @@ def TinhHOG(pathfilename):
   # return hog / np.linalg.norm(hog)
   return hog.reshape(1,-1)
 
-print('231')
+
 load_model = pickle.load(open('svm_hog.sav', 'rb'))
-print('123')
+
 # load_model = pickle.load(open('E:\\MayHocvaCongCu_SE335\\Project\\VTCC-App\\backend\\svm_hog.sav', 'rb'))
 # X_temp=np.array(TinhHOG('E:\computer_vision\Project\BanhPia\Banh_pia_138.png').reshape(1,-1))
 # print(load_model.predict(X_temp))
