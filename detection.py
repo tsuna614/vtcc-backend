@@ -12,7 +12,8 @@ model = YOLO("./train/weights/best.pt")
 img = os.path.join(data,img_path[0])
 result = model.predict(img, verbose = False)
 for r in result:
-    im_array = r.plot(conf=False)  # plot a BGR numpy array of predictions
+    # im_array = r.plot(conf=False)  # plot a BGR numpy array of predictions
+    im_array = r.plot(font_size = 16)
     im = Image.fromarray(im_array[..., ::-1])
 opencvImge = cv2.cvtColor(np.array(im), cv2.COLOR_RGB2BGR)
 cv2.imwrite(path, opencvImge)
