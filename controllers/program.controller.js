@@ -38,11 +38,11 @@ const programController = {
                 if (err) throw err;
                 console.log(req.file.path + " was deleted");
             });            
-            await delay(10000);
-            unlink(resultPath, (err) => {
-                if (err) throw err;
-                console.log(resultPath + " was deleted");
-            });
+            // await delay(10000);
+            // unlink(resultPath, (err) => {
+            //     if (err) throw err;
+            //     console.log(resultPath + " was deleted");
+            // });
             // unlink("assets", (err) => {
             //   if (err) throw err;
             //   console.log("imagePath.json was deleted");
